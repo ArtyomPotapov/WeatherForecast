@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		5029F41C291BE02B00CD17ED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5029F41B291BE02B00CD17ED /* AppDelegate.swift */; };
 		5029F41E291BE02B00CD17ED /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5029F41D291BE02B00CD17ED /* SceneDelegate.swift */; };
-		5029F420291BE02B00CD17ED /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5029F41F291BE02B00CD17ED /* ViewController.swift */; };
 		5029F423291BE02B00CD17ED /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5029F421291BE02B00CD17ED /* Main.storyboard */; };
 		5029F425291BE03100CD17ED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5029F424291BE03100CD17ED /* Assets.xcassets */; };
 		5029F428291BE03100CD17ED /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5029F426291BE03100CD17ED /* LaunchScreen.storyboard */; };
@@ -23,7 +22,6 @@
 		5029F418291BE02B00CD17ED /* WeatherForecast.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherForecast.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5029F41B291BE02B00CD17ED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5029F41D291BE02B00CD17ED /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		5029F41F291BE02B00CD17ED /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		5029F422291BE02B00CD17ED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5029F424291BE03100CD17ED /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5029F427291BE03100CD17ED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -64,19 +62,50 @@
 		5029F41A291BE02B00CD17ED /* WeatherForecast */ = {
 			isa = PBXGroup;
 			children = (
-				5029F41B291BE02B00CD17ED /* AppDelegate.swift */,
-				5029F41D291BE02B00CD17ED /* SceneDelegate.swift */,
-				5029F41F291BE02B00CD17ED /* ViewController.swift */,
-				5029F421291BE02B00CD17ED /* Main.storyboard */,
-				5029F435291C03DE00CD17ED /* CityTableViewCell.swift */,
-				5029F42F291BEBE400CD17ED /* ListTableViewController.swift */,
-				5029F433291C01A400CD17ED /* DetailViewController.swift */,
-				5029F431291BF63F00CD17ED /* WeatherJSONModel.swift */,
-				5029F424291BE03100CD17ED /* Assets.xcassets */,
-				5029F426291BE03100CD17ED /* LaunchScreen.storyboard */,
-				5029F429291BE03100CD17ED /* Info.plist */,
+				5029F437291C23DF00CD17ED /* Model */,
+				5029F438291C23E900CD17ED /* View */,
+				5029F439291C23F300CD17ED /* Controller */,
+				5029F43A291C242B00CD17ED /* Supporting files */,
 			);
 			path = WeatherForecast;
+			sourceTree = "<group>";
+		};
+		5029F437291C23DF00CD17ED /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5029F431291BF63F00CD17ED /* WeatherJSONModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		5029F438291C23E900CD17ED /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5029F421291BE02B00CD17ED /* Main.storyboard */,
+				5029F435291C03DE00CD17ED /* CityTableViewCell.swift */,
+				5029F426291BE03100CD17ED /* LaunchScreen.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		5029F439291C23F300CD17ED /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				5029F42F291BEBE400CD17ED /* ListTableViewController.swift */,
+				5029F433291C01A400CD17ED /* DetailViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		5029F43A291C242B00CD17ED /* Supporting files */ = {
+			isa = PBXGroup;
+			children = (
+				5029F41B291BE02B00CD17ED /* AppDelegate.swift */,
+				5029F41D291BE02B00CD17ED /* SceneDelegate.swift */,
+				5029F424291BE03100CD17ED /* Assets.xcassets */,
+				5029F429291BE03100CD17ED /* Info.plist */,
+			);
+			path = "Supporting files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -152,7 +181,6 @@
 			files = (
 				5029F432291BF64000CD17ED /* WeatherJSONModel.swift in Sources */,
 				5029F436291C03DE00CD17ED /* CityTableViewCell.swift in Sources */,
-				5029F420291BE02B00CD17ED /* ViewController.swift in Sources */,
 				5029F41C291BE02B00CD17ED /* AppDelegate.swift in Sources */,
 				5029F434291C01A400CD17ED /* DetailViewController.swift in Sources */,
 				5029F41E291BE02B00CD17ED /* SceneDelegate.swift in Sources */,
@@ -305,7 +333,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 7M366N87RZ;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = WeatherForecast/Info.plist;
+				INFOPLIST_FILE = "/Users/artyompotapov/Desktop/Всякие учебные проекты/WeatherForecast/WeatherForecast/Supporting files/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -333,7 +361,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 7M366N87RZ;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = WeatherForecast/Info.plist;
+				INFOPLIST_FILE = "/Users/artyompotapov/Desktop/Всякие учебные проекты/WeatherForecast/WeatherForecast/Supporting files/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
