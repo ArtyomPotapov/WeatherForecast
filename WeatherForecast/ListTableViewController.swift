@@ -7,27 +7,42 @@
 
 import UIKit
 
+let urlString = "https://api.weather.yandex.ru/v2/forecast?lat=55.793080&lon=37.544226"
+let keyAPI = "X-Yandex-API-Key"
+let keyAPIValue = "7feb12d1-5fb4-41eb-afba-b02d43f017d2"
+
 class ListTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        requestWeatherData()
     }
 
+    func requestWeatherData(){
+        guard let url = URL(string: urlString) else { return }
+        
+        var request = URLRequest(url: url, timeoutInterval: Double.infinity )
+        request.addValue(keyAPIValue, forHTTPHeaderField: keyAPI)
+        request.httpMethod = "GET"
+        
+        let session = URLSession.shared.dataTask(with: request) { data, response, error in
+            
+            guard let data = data else {return}
+            print(String(data: data, encoding: .utf8)!)
+        }
+        session.resume()
+        
+    }
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
+        
         return 0
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
+        
         return 0
     }
 
