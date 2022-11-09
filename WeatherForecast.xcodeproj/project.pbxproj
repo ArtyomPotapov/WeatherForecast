@@ -15,6 +15,8 @@
 		5029F428291BE03100CD17ED /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5029F426291BE03100CD17ED /* LaunchScreen.storyboard */; };
 		5029F430291BEBE400CD17ED /* ListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5029F42F291BEBE400CD17ED /* ListTableViewController.swift */; };
 		5029F432291BF64000CD17ED /* WeatherJSONModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5029F431291BF63F00CD17ED /* WeatherJSONModel.swift */; };
+		5029F434291C01A400CD17ED /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5029F433291C01A400CD17ED /* DetailViewController.swift */; };
+		5029F436291C03DE00CD17ED /* CityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5029F435291C03DE00CD17ED /* CityTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		5029F429291BE03100CD17ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5029F42F291BEBE400CD17ED /* ListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewController.swift; sourceTree = "<group>"; };
 		5029F431291BF63F00CD17ED /* WeatherJSONModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherJSONModel.swift; sourceTree = "<group>"; };
+		5029F433291C01A400CD17ED /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		5029F435291C03DE00CD17ED /* CityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,7 +68,9 @@
 				5029F41D291BE02B00CD17ED /* SceneDelegate.swift */,
 				5029F41F291BE02B00CD17ED /* ViewController.swift */,
 				5029F421291BE02B00CD17ED /* Main.storyboard */,
+				5029F435291C03DE00CD17ED /* CityTableViewCell.swift */,
 				5029F42F291BEBE400CD17ED /* ListTableViewController.swift */,
+				5029F433291C01A400CD17ED /* DetailViewController.swift */,
 				5029F431291BF63F00CD17ED /* WeatherJSONModel.swift */,
 				5029F424291BE03100CD17ED /* Assets.xcassets */,
 				5029F426291BE03100CD17ED /* LaunchScreen.storyboard */,
@@ -145,8 +151,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				5029F432291BF64000CD17ED /* WeatherJSONModel.swift in Sources */,
+				5029F436291C03DE00CD17ED /* CityTableViewCell.swift in Sources */,
 				5029F420291BE02B00CD17ED /* ViewController.swift in Sources */,
 				5029F41C291BE02B00CD17ED /* AppDelegate.swift in Sources */,
+				5029F434291C01A400CD17ED /* DetailViewController.swift in Sources */,
 				5029F41E291BE02B00CD17ED /* SceneDelegate.swift in Sources */,
 				5029F430291BEBE400CD17ED /* ListTableViewController.swift in Sources */,
 			);
