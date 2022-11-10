@@ -11,10 +11,18 @@ import Foundation
 
 class NetworkManager{
     //
-    func requestWeatherData(completion: @escaping (Weather)->()){
+    func requestWeatherData(latitude: Double, longitude: Double, completion: @escaping (Weather)->()){
         guard let url = URL(string: Constants.urlString) else { return }
         
-        var request = URLRequest(url: url, timeoutInterval: Double.infinity )
+        var components = URLComponents(url: url, resolvingAgainstBaseURL: false)
+        components?.queryItems = [
+        URLQueryItem(name: "lat", value: String(describing: latitude)),
+        URLQueryItem(name: "lon", value: String(describing:longitude))
+        ]
+        
+        guard let queryURL = components?.url else {return}
+        
+        var request = URLRequest(url: queryURL, timeoutInterval: Double.infinity )
         request.addValue(Constants.keyAPIValue, forHTTPHeaderField: Constants.keyAPI)
         request.httpMethod = "GET"
         
