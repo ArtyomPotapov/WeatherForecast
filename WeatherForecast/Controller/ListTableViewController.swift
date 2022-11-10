@@ -6,12 +6,13 @@
 //
 
 import UIKit
+import CoreLocation
 
 class ListTableViewController: UITableViewController {
     
     let networkManager = NetworkManager()
     var citiesWeatherArray = [Weather](){
-        willSet {
+        didSet {
             DispatchQueue.main.async {
                 self.tableView.reloadData()
                 self.tableView.isHidden = false
@@ -41,9 +42,6 @@ class ListTableViewController: UITableViewController {
             }
     }
     
-    func someFunc(weather: Weather, completion: @escaping(Weather)->()){
-        completion(weather)
-    }
     
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -77,7 +75,17 @@ class ListTableViewController: UITableViewController {
     }
     
     @IBAction func addButtonTapped(_ sender: UIBarButtonItem) {
-        
+        addAddressAlert(title: "Новый город", placeholder: "Введите название") { string in
+            self.getCoordinate(from: string) { coordinate, error in
+                guard let coordinate = coordinate else {return}
+                self.networkManager.requestWeatherData(latitude: coordinate.latitude, longitude: coordinate.longitude) { weather in
+                    var newWeather = weather
+                    newWeather.name = string
+                    self.citiesWeatherArray.append(newWeather)
+                }
+                
+            }
+        }
     }
     
     
