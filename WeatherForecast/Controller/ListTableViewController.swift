@@ -18,12 +18,16 @@ class ListTableViewController: UITableViewController {
             }
         }
     }
+    
 
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.isHidden = true
         loadWeatherArray()
         citiesWeatherArray = Array(repeating: Weather(), count: cityNamesArray.count)
+        
     }
     
     func loadWeatherArray(){
@@ -51,6 +55,7 @@ class ListTableViewController: UITableViewController {
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return citiesWeatherArray.count
+        
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -60,6 +65,14 @@ class ListTableViewController: UITableViewController {
         cell.setLabels(weather: citiesWeatherArray[indexPath.row])
         
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let detailVC = storyboard.instantiateViewController(withIdentifier: "DetailViewController_id") as! DetailViewController
+        detailVC.weather = citiesWeatherArray[indexPath.row]
+        print(citiesWeatherArray[indexPath.row])
+        present(detailVC, animated: false)
     }
     
 }

@@ -8,7 +8,7 @@
 import Foundation
 import CoreLocation
 
-let cityNamesArray = ["Москва","Брянск","Воронеж","Грозный","Дмитров","Елец", "Курск", "Тула"]
+let cityNamesArray = ["Москва","Брянск","Воронеж","Грозный","Дмитров","Елец", "Лондон", "Пекин"]
 
 extension ListTableViewController{
     

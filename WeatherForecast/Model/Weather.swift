@@ -16,7 +16,9 @@ struct Weather{
     let icon: Icon
     var url: String
     var pressure: Int
+    var feelsLike: Int
     var windSpeed: Double
+    var humidity: Int
     var tempMin: Int?
     var tempMax: Int?
     
@@ -49,10 +51,12 @@ struct Weather{
     init?(weatherJSONModel: WeatherJSONModel){
         temperature = weatherJSONModel.fact.temp
         condition = weatherJSONModel.fact.condition
+        humidity = weatherJSONModel.fact.humidity
         icon = weatherJSONModel.fact.icon
         url = weatherJSONModel.info.url
         pressure = weatherJSONModel.fact.pressureMm
         windSpeed = weatherJSONModel.fact.windSpeed
+        feelsLike = weatherJSONModel.fact.feelsLike
         tempMin = weatherJSONModel.forecasts.first?.parts.day.tempMin
         tempMax = weatherJSONModel.forecasts.first?.parts.day.tempMax
     }
@@ -62,8 +66,10 @@ struct Weather{
         icon = .bknD
         url = ""
         pressure = 0
+        feelsLike = 0
         windSpeed = 0
         tempMin = 0
         tempMax = 0
+        humidity = 0
     }
 }

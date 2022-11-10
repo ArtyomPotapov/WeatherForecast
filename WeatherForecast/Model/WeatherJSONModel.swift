@@ -35,13 +35,15 @@ struct Fact: Codable {
     let icon: Icon
     let condition: Condition
     let windSpeed: Double
-    let pressureMm: Int
+    let pressureMm, humidity, feelsLike: Int
+  
 
     enum CodingKeys: String, CodingKey {
-        case temp
+        case temp, humidity
         case icon, condition
         case windSpeed = "wind_speed"
         case pressureMm = "pressure_mm"
+        case feelsLike = "feels_like"
     }
 }
 
@@ -61,13 +63,14 @@ enum Icon: String, Codable {
 struct Forecast: Codable {
     let parts: Parts
     let sunrise, sunset, riseBegin, setEnd: String
-
+    let tempMin, tempMax: Int?
+    
     enum CodingKeys: String, CodingKey {
         case parts
         case sunrise, sunset
         case riseBegin = "rise_begin"
         case setEnd = "set_end"
-
+        case tempMin, tempMax
     }
 }
 struct Parts: Codable {
