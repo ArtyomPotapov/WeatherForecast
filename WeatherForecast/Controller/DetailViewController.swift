@@ -6,13 +6,15 @@
 //
 
 import UIKit
+import SwiftSVG
 
 class DetailViewController: UIViewController {
     var weather: Weather?
     
     @IBOutlet weak var nameLabel: UILabel!
     
-    @IBOutlet weak var myImageView: UIImageView!
+    
+    @IBOutlet weak var myView: UIView!
     
     
     @IBOutlet weak var statusLabel: UILabel!
@@ -36,11 +38,11 @@ class DetailViewController: UIViewController {
 //        viewWeather = weather.
         nameLabel.text = "\(weather.name)"
         statusLabel.text = "\(weather.conditionString)"
-        tempLabel.text = "\(weather.temperature)"
-        pressureLabel.text = "\(weather.pressure)"
-        windLabel.text = "\(weather.windSpeed)"
-        minTempLabel.text = "\(weather.feelsLike)"
-        maxTempLabel.text = "\(weather.humidity)"
+        tempLabel.text = "\(weather.temperature) °C"
+        pressureLabel.text = "\(weather.pressure) мм рт.ст."
+        windLabel.text = "\(weather.windSpeed) м/с"
+        minTempLabel.text = "\(weather.feelsLike) °C"
+        maxTempLabel.text = "\(weather.humidity) %"
         
         
     }
@@ -50,18 +52,16 @@ class DetailViewController: UIViewController {
         
         let path = Constants.imageBaseURL + weather.icon.rawValue + ".svg"
         let url = URL(string: path)!
-        
-        
-        print(url)
-        let task = URLSession.shared.dataTask(with: url) { data, _, _ in
-            guard let data = data else {return}
-            print(data)
-            DispatchQueue.main.async {
-                self.myImageView.image = UIImage(data: data)
-                self.loadViewIfNeeded()
-            }
+        let image = UIView(SVGURL: url){image in
+            image.resizeToFit(self.myView.bounds)
         }
-        task.resume()
+        myView.addSubview(image)
+print(url, image)
+        
+        
+        
+
+
     }
 
 }
