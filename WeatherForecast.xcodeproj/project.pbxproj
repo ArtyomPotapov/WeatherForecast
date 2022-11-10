@@ -95,7 +95,6 @@
 			children = (
 				5029F421291BE02B00CD17ED /* Main.storyboard */,
 				5029F435291C03DE00CD17ED /* CityTableViewCell.swift */,
-				5029F426291BE03100CD17ED /* LaunchScreen.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -115,6 +114,7 @@
 				5029F41B291BE02B00CD17ED /* AppDelegate.swift */,
 				5029F41D291BE02B00CD17ED /* SceneDelegate.swift */,
 				5029F424291BE03100CD17ED /* Assets.xcassets */,
+				5029F426291BE03100CD17ED /* LaunchScreen.storyboard */,
 				5029F429291BE03100CD17ED /* Info.plist */,
 			);
 			path = "Supporting files";

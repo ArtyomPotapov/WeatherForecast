@@ -26,6 +26,7 @@ class NetworkManager{
         request.addValue(Constants.keyAPIValue, forHTTPHeaderField: Constants.keyAPI)
         request.httpMethod = "GET"
         
+        
         let session = URLSession.shared.dataTask(with: request) { data, response, error in
             
             guard let data = data, let weatherData = self.parseJSON(withData: data) else {return}

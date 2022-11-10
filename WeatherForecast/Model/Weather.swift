@@ -56,5 +56,14 @@ struct Weather{
         tempMin = weatherJSONModel.forecasts.first?.parts.day.tempMin
         tempMax = weatherJSONModel.forecasts.first?.parts.day.tempMax
     }
-    
+    init(){
+        temperature = 0
+        condition = .cloudy
+        icon = .bknD
+        url = ""
+        pressure = 0
+        windSpeed = 0
+        tempMin = 0
+        tempMax = 0
+    }
 }
