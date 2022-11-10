@@ -31,7 +31,7 @@ struct Info: Codable {
 }
 // MARK: - Fact
 struct Fact: Codable {
-    let temp: Int
+    let temp: Double
     let icon: Icon
     let condition: Condition
     let windSpeed: Double

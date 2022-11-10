@@ -10,7 +10,7 @@ import Foundation
 struct Weather{
     
     var name: String = "Название"
-    var temperature: Int
+    var temperature: Double
     var conditionCode: String = Constants.conditionCode
     var condition: Condition
     let icon: Icon

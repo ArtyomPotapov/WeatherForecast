@@ -13,20 +13,13 @@ class CityTableViewCell: UITableViewCell {
     @IBOutlet weak var cityNameLabel: UILabel!
     @IBOutlet weak var tempLabel: UILabel!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
 
     func setLabels(weather: Weather){
         self.cityNameLabel.text = weather.name
         self.statusLabel.text = weather.conditionString
-        tempLabel.text = "\(weather.temperature)" 
+        tempLabel.text = {
+            return String(format: "%.0f", weather.temperature)
+        }()
     }
 }

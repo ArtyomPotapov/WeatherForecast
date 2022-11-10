@@ -38,7 +38,7 @@ class DetailViewController: UIViewController {
 //        viewWeather = weather.
         nameLabel.text = "\(weather.name)"
         statusLabel.text = "\(weather.conditionString)"
-        tempLabel.text = "\(weather.temperature) °C"
+        tempLabel.text = "\(Int(weather.temperature)) °C"
         pressureLabel.text = "\(weather.pressure) мм рт.ст."
         windLabel.text = "\(weather.windSpeed) м/с"
         minTempLabel.text = "\(weather.feelsLike) °C"
