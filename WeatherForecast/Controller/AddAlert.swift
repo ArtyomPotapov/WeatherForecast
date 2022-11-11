@@ -10,7 +10,7 @@ import CoreLocation
 
 extension ListTableViewController {
     
-    func addAddressAlert(title: String, placeholder: String, completionHandler: @escaping (String)->()){
+    func addAlert(title: String, placeholder: String, completionHandler: @escaping (String)->()){
         
         let alertController = UIAlertController(title: title, message: nil, preferredStyle: .alert)
         alertController.addTextField { textFiels in
@@ -34,5 +34,4 @@ extension ListTableViewController {
         alertController.addAction(cancelButton)
         present(alertController, animated: false)
     }
-    
 }

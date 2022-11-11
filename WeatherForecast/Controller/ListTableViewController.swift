@@ -12,19 +12,38 @@ class ListTableViewController: UITableViewController {
     
     let networkManager = NetworkManager()
     var citiesWeatherArray = [Weather](){
-        didSet {
+        willSet {
             DispatchQueue.main.async {
                 self.tableView.reloadData()
                 self.tableView.isHidden = false
             }
         }
     }
-
+    var filterCitiesWeatherArray = [Weather]()
+    
+    let searchController = UISearchController(searchResultsController: nil)
+    
+    var searchBarIsEmpty: Bool{
+        return searchController.searchBar.text != nil ? true : false
+    }
+    
+    var isFiltering: Bool {
+        return searchController.isActive && searchBarIsEmpty
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.isHidden = true
         loadWeatherArray()
+        
         citiesWeatherArray = Array(repeating: Weather(), count: cityNamesArray.count)
+        
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Поиск"
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
+        navigationItem.hidesSearchBarWhenScrolling = false
     }
     
     func loadWeatherArray(){
@@ -42,24 +61,30 @@ class ListTableViewController: UITableViewController {
             }
     }
     
-    
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return citiesWeatherArray.count
+        return isFiltering ? filterCitiesWeatherArray.count : citiesWeatherArray.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? CityTableViewCell else {return UITableViewCell()}
-        cell.setLabels(weather: citiesWeatherArray[indexPath.row])
-        
+        if isFiltering {
+            cell.setLabels(weather: filterCitiesWeatherArray[indexPath.row])
+        } else {
+                cell.setLabels(weather: citiesWeatherArray[indexPath.row])
+            }
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let detailVC = storyboard.instantiateViewController(withIdentifier: "DetailViewController_id") as! DetailViewController
-        detailVC.weather = citiesWeatherArray[indexPath.row]
+        if isFiltering {
+            detailVC.weather = filterCitiesWeatherArray[indexPath.row]
+        } else {
+            detailVC.weather = citiesWeatherArray[indexPath.row]
+        }
         print(citiesWeatherArray[indexPath.row])
         present(detailVC, animated: false)
     }
@@ -67,7 +92,6 @@ class ListTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         
         let deleteAction = UIContextualAction(style: .destructive, title: "Удалить") { _, _, completionHandler  in
-            
             self.citiesWeatherArray.remove(at: indexPath.row)
             tableView.reloadData()
         }
@@ -75,7 +99,7 @@ class ListTableViewController: UITableViewController {
     }
     
     @IBAction func addButtonTapped(_ sender: UIBarButtonItem) {
-        addAddressAlert(title: "Новый город", placeholder: "Введите название") { string in
+        addAlert(title: "Новый город", placeholder: "Введите название") { string in
             self.getCoordinate(from: string) { coordinate, error in
                 guard let coordinate = coordinate else {return}
                 self.networkManager.requestWeatherData(latitude: coordinate.latitude, longitude: coordinate.longitude) { weather in
@@ -83,10 +107,19 @@ class ListTableViewController: UITableViewController {
                     newWeather.name = string
                     self.citiesWeatherArray.append(newWeather)
                 }
-                
             }
         }
     }
-    
-    
+}
+
+extension ListTableViewController: UISearchResultsUpdating{
+    func updateSearchResults(for searchController: UISearchController) {
+        filterContentForSearchText(searchController.searchBar.text!)
+    }
+    func filterContentForSearchText(_ searchText: String){
+        filterCitiesWeatherArray = citiesWeatherArray.filter{ weather in
+            weather.name.contains(searchText)
+        }
+        tableView.reloadData()
+    }
 }

@@ -13,8 +13,6 @@ class CityTableViewCell: UITableViewCell {
     @IBOutlet weak var cityNameLabel: UILabel!
     @IBOutlet weak var tempLabel: UILabel!
     
-
-
     func setLabels(weather: Weather){
         self.cityNameLabel.text = weather.name
         self.statusLabel.text = weather.conditionString

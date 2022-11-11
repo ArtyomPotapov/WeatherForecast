@@ -8,14 +8,12 @@
 import Foundation
 import CoreLocation
 
-let cityNamesArray = ["Москва","Брянск","Воронеж","Грозный","Дмитров","Елец", "Лондон", "Пекин"]
+let cityNamesArray = ["Москва","Брянск","Воронеж","Саратов","Рязань","Елец", "Ряжск", "Пекин"]
 
 extension ListTableViewController{
     
     func getCoordinate(from city: String, completion: @escaping (_ coordinate: CLLocationCoordinate2D?, _ error: Error?)->()){
-        
         CLGeocoder().geocodeAddressString(city) { placemarks, error in
-            
             completion(placemarks?.first?.location?.coordinate, error)
         }
     }
