@@ -11,11 +11,11 @@
 
 Для отображения нестандартного для Xcode изображения формата .svg, в программу добавлен pod SwiftSVG с адреса https://github.com/mchoe/SwiftSVG?ysclid=lacy0l1wvt463330689
 
-Приложение сделано с помощью тестовой версии API Яндекс.Погоды - подробнее https://yandex.com/dev/weather/doc/dg/concepts/about.html
+Приложение создано с помощью тестовой версии API Яндекс.Погоды, подробнее - https://yandex.com/dev/weather/doc/dg/concepts/about.html
 
 #### Основной использованный стэк: 
 - UIKit
-- UIYableViewController
+- UITableViewController
 - CoreLocation
 - SearchBar 
 - Cocoapods
