@@ -19,17 +19,21 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var minTempLabel: UILabel!
     @IBOutlet weak var maxTempLabel: UILabel!
     
+    private let gradientLayer = CAGradientLayer()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setLabels()
         setImage()
+        setupGradient()
     }
     
     func setLabels(){
         guard let weather = weather else {return}
         nameLabel.text = "\(weather.name)"
         statusLabel.text = "\(weather.conditionString)"
-        tempLabel.text = "\(Int(weather.temperature)) °C"
+        tempLabel.text = "\(Int(weather.temperature))"
         pressureLabel.text = "\(weather.pressure) мм рт.ст."
         windLabel.text = "\(weather.windSpeed) м/с"
         minTempLabel.text = "\(weather.feelsLike) °C"
@@ -46,4 +50,13 @@ class DetailViewController: UIViewController {
         myView.addSubview(image)
         print(url, image)
     }
+    
+    func setupGradient(){
+        view.layer.insertSublayer(gradientLayer, at: 0)
+        gradientLayer.colors = [UIColor.red.cgColor, UIColor.yellow.cgColor]
+        gradientLayer.frame = view.bounds
+        
+    }
+    
+    
 }
