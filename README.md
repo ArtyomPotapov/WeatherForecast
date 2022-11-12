@@ -19,6 +19,8 @@
 - CoreLocation
 - SearchBar 
 - Cocoapods
+- CAGradientLayer
 
-![Запись экрана 2022-11-11 в 23 04 54](https://user-images.githubusercontent.com/95984296/201424117-7eb5da94-df9e-4311-bcaf-dbe5aacd4c53.gif)
+
+![Запись экрана 2022-11-12 в 15 29 30](https://user-images.githubusercontent.com/95984296/201474292-2b663a37-60e7-4ba3-a57e-94521d8499f1.gif)
 
